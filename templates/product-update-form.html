@@ -1,0 +1,46 @@
+{# extend main layout #}
+{% extends "layout.html" %}
+
+{# override title block #}
+{% block title %}Product Form: Update{% endblock %}
+
+{# override header block and use contents from title block #}
+{% block header %}
+<h1>{{ block('title') }}</h1>
+{% endblock %}
+
+{# product-view: page 1/2 #}
+
+{# override content block #}
+{% block content %}
+<form action="">
+    <div class="input-item">
+        <label class="text-primary" for="name">Name: </label>
+        <input id="name" type="text">
+    </div>
+
+    <div class="input-item">
+        <label class="text-primary" for="category">Category: </label>
+        <select name="" id="category">
+            <option value="">Phone</option>
+        </select>
+    </div>
+
+    <div class="input-item">
+        <label class="text-primary" for="price">Price: </label>
+        <input class="number" id="price" type="text">
+    </div>
+
+    <div class="input-item">
+        <label class="text-primary" for="quantity">Quantity: </label>
+        <input class="number" id="quantity" type="text">
+    </div>
+
+    <div class="action-bar">
+        <button type="submit" class="button primary">Save</button>
+        <button class="button">Cancel</button>
+    </div>
+</form>
+{% endblock %}
+
+{# product-view: page 2/2 #}

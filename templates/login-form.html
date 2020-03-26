@@ -1,0 +1,32 @@
+{# extend main layout #}
+{% extends "layout.html" %}
+
+{# override title block #}
+{% block title %}Login System{% endblock %}
+
+{# override header block and use contents from title block #}
+{% block header %}
+<h1>{{ block('title') }}</h1>
+{% endblock %}
+
+{# product-view: page 1/2 #}
+
+{# override content block #}
+{% block content %}
+<form action="">
+    <div class="input-item">
+        <label class="text-primary" for="username">Username: </label>
+        <input id="username" type="text">
+    </div>
+
+    <div class="input-item">
+        <label class="text-primary" for="password">Password: </label>
+        <input id="password" type="text">
+    </div>
+
+    <button type="submit" class="button primary">Login</button>
+
+</form>
+{% endblock %}
+
+{# product-view: page 2/2 #}

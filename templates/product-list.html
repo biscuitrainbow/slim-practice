@@ -6,18 +6,32 @@
 
 {# override header block and use contents from title block #}
 {% block header %}
-  <h1>{{ block('title') }}</h1>
+<h1>{{ block('title') }}</h1>
 {% endblock %}
 
 {# product-list: page 1/2 #}
 {# override content block #}
 {% block content %}
-  {% for item in data %}
-  <a href="{{ url_for('product-view', {id: item.id}) }}">
-    {{ item.name }}
-  </a>
-  <br />
-  {% endfor %}
+<a href="{{url_for('product-add-form')}}">Add Product</a>
+
+<table class="bordered">
+    <tr class="table-header">
+        <th class="bordered">Name</th>
+        <th class="bordered">Category</th>
+        <th class="bordered">Price</th>
+        <th class="bordered">Quantity</th>
+    </tr>
+
+
+    {% for item in data %}
+    <tr>
+        <td class="title bordered"><a href="{{url_for('product-view',{'id' : item.id})}}">{{item.name}}</a></td>
+        <td class="bordered">{{item.category}}</td>
+        <td class="bordered">{{item.price | number_format(2)}}</td>
+        <td class="bordered">{{item.quantity}}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
 
 {# product-list: page 2/2 #}

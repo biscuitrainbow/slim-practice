@@ -16,11 +16,33 @@
 {% if data is empty %}
 <p>Product not found!!!</p>
 {% else %}
-<p>
-    Name: {{ data.name }}<br />
-    Price: {{ data.price|number_format(2) }}<br />
-</p>
-<a href="{{ url_for('product-list') }}">Back</a>
+<div class="action-bar">
+    <div class="action-bar">
+        <a class="text-positive" href="{{ url_for('product-update-form',{id: data.id}) }}">Update Product</a>
+        <a class="text-negative" href="{{ url_for('product-list') }}">Delete Product</a>
+    </div>
+
+    <a href="{{ url_for('product-list') }}">Back</a>
+
+</div>
+<table>
+    <tr>
+        <td class="text-primary">Name</td>
+        <td class="detail">{{data.name}}</td>
+    </tr>
+    <tr>
+        <td class="text-primary">Category</td>
+        <td class="detail">{{data.category}}</td>
+    </tr>
+    <tr>
+        <td class="text-primary">Price</td>
+        <td class="detail">{{data.price}}</td>
+    </tr>
+    <tr>
+        <td class="text-primary">Quantity</td>
+        <td class="detail">{{data.quantity}}</td>
+    </tr>
+</table>
 {% endif %}
 {% endblock %}
 

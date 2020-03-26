@@ -10,9 +10,9 @@ class ProductController
 {
     // This is just a mock up data, the real data come from database
     private static $PRODUCT_DATA = [
-        ['id' => 101, 'name' => 'Product A', 'price' => 1234.56],
-        ['id' => 250, 'name' => 'Product B', 'price' => 2345.67],
-        ['id' => 400, 'name' => 'Product C', 'price' => 3456.78],
+        ['id' => 101, 'name' => 'Product A', 'price' => 1234.56, 'category' => 'Phone', 'quantity' => 100],
+        ['id' => 250, 'name' => 'Product B', 'price' => 2345.67, 'category' => 'Phone', 'quantity' => 100],
+        ['id' => 400, 'name' => 'Product C', 'price' => 3456.78, 'category' => 'Tablet', 'quantity' => 300],
     ];
 
     public function listAction(
@@ -43,5 +43,30 @@ class ProductController
         return $view->render($response, 'product-view.html', [
             'data' => $item,
         ]);
+    }
+
+
+    public function addFormAction(
+        Request $request,
+        Response $response,
+        $args
+    ): Response {
+
+
+        $view = Twig::fromRequest($request);
+        // Use product-view.html template
+        return $view->render($response, 'product-add-form.html');
+    }
+
+    public function updateFormAction(
+        Request $request,
+        Response $response,
+        $args
+    ): Response {
+
+
+        $view = Twig::fromRequest($request);
+        // Use product-view.html template
+        return $view->render($response, 'product-update-form.html');
     }
 }
