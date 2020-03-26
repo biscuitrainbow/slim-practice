@@ -33,6 +33,10 @@ class ComposerStaticInitb371f7bec0f5e9ed3b5435e98d5cfd21
             'Psr\\Container\\' => 14,
             'PhpOption\\' => 10,
         ),
+        'M' => 
+        array (
+            'Middlewares\\' => 12,
+        ),
         'F' => 
         array (
             'Fig\\Http\\Message\\' => 17,
@@ -44,6 +48,8 @@ class ComposerStaticInitb371f7bec0f5e9ed3b5435e98d5cfd21
         ),
         'A' => 
         array (
+            'Aura\\Session\\_Config\\' => 21,
+            'Aura\\Session\\' => 13,
             'App\\' => 4,
         ),
     );
@@ -91,6 +97,10 @@ class ComposerStaticInitb371f7bec0f5e9ed3b5435e98d5cfd21
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'Middlewares\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/middlewares/aura-session/src',
+        ),
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
@@ -102,6 +112,14 @@ class ComposerStaticInitb371f7bec0f5e9ed3b5435e98d5cfd21
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'Aura\\Session\\_Config\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/session/config',
+        ),
+        'Aura\\Session\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/session/src',
         ),
         'App\\' => 
         array (

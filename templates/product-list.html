@@ -14,6 +14,10 @@
 {% block content %}
 <a href="{{url_for('product-add-form')}}">Add Product</a>
 
+{% if _session.getFlash('message') is not empty %}
+<p>{{ _session.getFlash('message')}}</p>
+{% endif %}
+
 <table class="bordered">
     <tr class="table-header">
         <th class="bordered">Name</th>
@@ -26,9 +30,9 @@
     {% for item in data %}
     <tr>
         <td class="title bordered"><a href="{{url_for('product-view',{'id' : item.id})}}">{{item.name}}</a></td>
-        <td class="bordered">{{item.category}}</td>
+        <td class="bordered">{{item.category_name}}</td>
         <td class="bordered">{{item.price | number_format(2)}}</td>
-        <td class="bordered">{{item.quantity}}</td>
+        <td class="bordered">{{item.qty}}</td>
     </tr>
     {% endfor %}
 </table>

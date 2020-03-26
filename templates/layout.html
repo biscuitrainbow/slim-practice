@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <div>
+        <span>Current User :</span>
+        <span>{{ _global.get('user').username }}</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
     <div id="header">
 
         <!-- START: header -->

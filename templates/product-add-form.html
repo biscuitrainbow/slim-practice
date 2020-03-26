@@ -13,27 +13,29 @@
 
 {# override content block #}
 {% block content %}
-<form action="">
+<form action="{{url_for('product-add')}}" method="post">
     <div class="input-item">
         <label class="text-primary" for="name">Name: </label>
-        <input id="name" type="text">
+        <input id="name" name="name" type="text">
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="category">Category: </label>
-        <select name="" id="category">
-            <option value="">Phone</option>
+        <select name="id_category" id="category">
+            {% for category in categoryList %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="price">Price: </label>
-        <input class="number" id="price" type="text">
+        <input class="number" name="price" id="price" type="text">
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="quantity">Quantity: </label>
-        <input class="number" id="quantity" type="text">
+        <input class="number" name="qty" id="quantity" type="text">
     </div>
 
     <div class="action-bar">

@@ -13,15 +13,20 @@
 
 {# override content block #}
 {% block content %}
-<form action="">
+
+{% if _session.getFlash('error') is not empty %}
+<p>{{ _session.getFlash('error') }}</p>
+{% endif %}
+
+<form action="{{url_for('login')}}" method="post">
     <div class="input-item">
         <label class="text-primary" for="username">Username: </label>
-        <input id="username" type="text">
+        <input name="username" id="username" type="text">
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="password">Password: </label>
-        <input id="password" type="text">
+        <input name="passwd" id="password" type="text">
     </div>
 
     <button type="submit" class="button primary">Login</button>
