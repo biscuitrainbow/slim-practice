@@ -130,10 +130,45 @@ class ProductController
         Response $response,
         $args
     ): Response {
-
-
         $view = Twig::fromRequest($request);
-        // Use product-view.html template
-        return $view->render($response, 'product-update-form.html');
+        $id = $args['id'];
+        $link = $request->getAttribute('mysqli')->connect();
+
+        return $view->render($response, 'product-update-form.html', [
+            'data' => self::getItem($link, $id),
+            'categoryList' => CategoryController::getAll($link),
+        ]);
+    }
+
+
+    public function updateProduct(
+        Request $request,
+        Response $response,
+        $args
+    ): Response {
+        $post = $request->getParsedBody();
+        $link = $request->getAttribute('mysqli')->connect();
+        $id = $args['id'];
+
+        mysqli_query(
+            $link,
+            <<<EOT
+                UPDATE product SET id_category =  '{$post['id_category']}',
+                                   name        =  '{$post['name']}',
+                                   price       =  '{$post['price']}',
+                                   qty         =  '{$post['qty']}'
+                WHERE id = {$id}
+            EOT
+        );
+
+        $request->getAttribute('session')
+            ->getSegment(self::class)
+            ->setFlash('message', "Update is sucessful.");
+
+        $routeContext = RouteContext::fromRequest($request);
+        return $response->withHeader(
+            'Location',
+            $routeContext->getRouteParser()->urlFor('product-list')
+        )->withStatus(302);
     }
 }

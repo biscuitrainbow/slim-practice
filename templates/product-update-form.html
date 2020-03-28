@@ -13,27 +13,29 @@
 
 {# override content block #}
 {% block content %}
-<form action="">
+<form action="{{url_for('product-update',{id:data.id})}}" method="post">
     <div class="input-item">
         <label class="text-primary" for="name">Name: </label>
-        <input id="name" type="text">
+        <input id="name" name="name" value="{{data.name}}" type="text">
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="category">Category: </label>
-        <select name="" id="category">
-            <option value="">Phone</option>
+        <select name="id_category" id="category">
+            {% for category in categoryList %}
+            <option {% if category.id == data.id_category %} {{"selected"}}  {% endif %} value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="price">Price: </label>
-        <input class="number" id="price" type="text">
+        <input class="number" value="{{data.price}}" name="price" id="price" type="text">
     </div>
 
     <div class="input-item">
         <label class="text-primary" for="quantity">Quantity: </label>
-        <input class="number" id="quantity" type="text">
+        <input class="number" value="{{data.qty}}" name="qty" id="quantity" type="text">
     </div>
 
     <div class="action-bar">
